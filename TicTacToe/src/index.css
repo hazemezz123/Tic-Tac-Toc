@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "JetBrains Mono", serif;
+  min-height: 100vh;
+  background: radial-gradient(
+      circle at center,
+      rgba(16, 185, 129, 0.05) 0%,
+      transparent 80%
+    ),
+    hsl(0 0% 3%);
+  @apply flex flex-col items-center text-emerald-300;
+}
+
+h1 {
+  font-family: "JetBrains Mono", serif;
+  @apply text-center text-5xl font-bold my-5;
+  font-family: "Geist", sans-serif;
+  font-weight: 140;
+  color: #4ade80;
+  mix-blend-mode: screen;
+}
+
+.Board {
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  @apply grid cursor-pointer relative  p-2 rounded-lg shadow-lg shadow-emerald-900/50 backdrop-blur-sm border border-emerald-500/30;
+}
+
+.Tile {
+  color: currentColor;
+  @apply flex justify-center items-center text-4xl    text-emerald-300;
+}
+
+.right-border {
+  @apply border-r-4 border-emerald-500/70;
+}
+
+.bottom-border {
+  @apply border-b-4 border-emerald-500/70;
+}
+
+.x-hover:hover::after {
+  content: "x";
+  @apply text-emerald-300 opacity-40;
+}
+
+.o-hover:hover::after {
+  content: "o";
+  @apply text-emerald-300 opacity-40;
+}
+
+.strike {
+  position: absolute;
+  @apply bg-gradient-to-r from-emerald-400 to-green-500;
+}
+
+.strike-row-1 {
+  width: 100%;
+  height: 4px;
+  top: 15%;
+}
+
+.strike-row-2 {
+  width: 100%;
+  height: 4px;
+  top: 48%;
+}
+
+.strike-row-3 {
+  width: 100%;
+  height: 4px;
+  top: 80%;
+}
+
+.strike-column-1 {
+  height: 100%;
+  width: 4px;
+  left: 17%;
+}
+
+.strike-column-2 {
+  height: 100%;
+  width: 4px;
+  left: 49%;
+}
+
+.strike-column-3 {
+  height: 100%;
+  width: 4px;
+  left: 81%;
+}
+
+.strike-diagonal-1 {
+  width: 90%;
+  height: 4px;
+  top: 50%;
+  left: 5%;
+  transform: skewY(45deg);
+}
+
+.strike-diagonal-2 {
+  width: 90%;
+  height: 4px;
+  top: 50%;
+  left: 5%;
+  transform: skewY(-45deg);
+}
+
+@keyframes flicker {
+  to {
+    mask-position: 50% 50%, 0 50%;
+  }
+}
